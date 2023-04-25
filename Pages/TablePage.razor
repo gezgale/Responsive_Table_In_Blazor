@@ -1,0 +1,76 @@
+﻿@page "/t"
+@page "/"
+<h3>TablePage</h3>
+
+@if (@PersList != null)
+{
+    <table class="table table-striped w-auto">
+
+        <!--Table head-->
+        <thead class="alert-dark">
+            <tr>
+                <th>RowID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Position</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <!--Table head-->
+        <!--Table body-->
+
+        <tbody>
+            @{ int rowNumber = 1; }
+            @foreach (var i in @PersList)
+            {
+                <tr class="@((rowNumber % 2 == 0) ? "table-info" : "")">
+                    <th scope="row">@{ rowNumber++; }</th>
+                    <td>@i.Name</td>
+                    <td>@i.Surname</td>
+                    <td>@i.Country</td>
+                    <td>@i.City</td>
+                    <td>@i.Position</td>
+                    <td>@i.Age</td>
+                </tr>
+            }
+        </tbody>
+
+
+        <!--Table body-->
+    </table>
+}
+else
+{
+    <h3>Waite . . .</h3>
+}
+@code {
+    public List<Dto.Person> PersList;
+    protected override async Task OnInitializedAsync()
+    {
+        PersList = new List<Dto.Person>
+{
+                new Dto.Person { Name = "John", Surname = "Doe", Country = "USA", City = "New York", Position = "Software Engineer", Age = 25 },
+                new Dto.Person { Name = "Jane", Surname = "Doe", Country = "USA", City = "Los Angeles", Position = "Data Scientist", Age = 30 },
+                new Dto.Person { Name = "Alex", Surname = "Johnson", Country = "Canada", City = "Toronto", Position = "Project Manager", Age = 35 },
+                new Dto.Person { Name = "Emily", Surname = "Wong", Country = "China", City = "Shanghai", Position = "Marketing Specialist", Age = 28 },
+                new Dto.Person { Name = "Max", Surname = "Müller", Country = "Germany", City = "Berlin", Position = "Full Stack Developer", Age = 27 },
+                new Dto.Person { Name = "Juan", Surname = "Pérez", Country = "Mexico", City = "Mexico City", Position = "Business Analyst", Age = 32 },
+                new Dto.Person { Name = "Sophia", Surname = "Kim", Country = "South Korea", City = "Seoul", Position = "UX Designer", Age = 29 },
+                new Dto.Person { Name = "Ahmed", Surname = "Khalid", Country = "Egypt", City = "Cairo", Position = "DevOps Engineer", Age = 31 },
+                new Dto.Person { Name = "Natalia", Surname = "Garcia", Country = "Spain", City = "Madrid", Position = "Product Manager", Age = 33 },
+                new Dto.Person { Name = "Kazuhiro", Surname = "Yamamoto", Country = "Japan", City = "Tokyo", Position = "Software Developer", Age = 26 },
+                new Dto.Person { Name = "Emma", Surname = "Johnson", Country = "Canada", City = "Vancouver", Position = "Software Developer", Age = 28 },
+                new Dto.Person { Name = "Ricardo", Surname = "Garcia", Country = "Mexico", City = "Guadalajara", Position = "UI Designer", Age = 30 },
+                new Dto.Person { Name = "Maria", Surname = "Rodriguez", Country = "Spain", City = "Barcelona", Position = "Marketing Manager", Age = 33 },
+                new Dto.Person { Name = "Hiroki", Surname = "Tanaka", Country = "Japan", City = "Osaka", Position = "System Administrator", Age = 29 },
+                new Dto.Person { Name = "Amir", Surname = "Khani", Country = "Iran", City = "Tehran", Position = "Mobile Developer", Age = 26 },
+                new Dto.Person { Name = "David", Surname = "Gonzalez", Country = "Colombia", City = "Bogotá", Position = "Data Analyst", Age = 27 },
+                new Dto.Person { Name = "Sara", Surname = "Fernandez", Country = "Argentina", City = "Buenos Aires", Position = "Software Engineer", Age = 31 },
+                new Dto.Person { Name = "Jorge", Surname = "Martinez", Country = "Mexico", City = "Monterrey", Position = "QA Engineer", Age = 34 },
+                new Dto.Person { Name = "Mai", Surname = "Nguyen", Country = "Vietnam", City = "Ho Chi Minh City", Position = "Front End Developer", Age = 25 },
+                new Dto.Person { Name = "Mohammad", Surname = "Ali", Country = "Pakistan", City = "Lahore", Position = "Backend Developer", Age = 32 }
+            };
+    }
+}
